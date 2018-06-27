@@ -1,3 +1,4 @@
+import { SysResource } from './../../../core/utility/sys-resource';
 
 import { SettingsService, TitleService, MenuService } from '@delon/theme';
 import { Component, OnDestroy, Inject, Optional, OnInit } from '@angular/core';
@@ -176,14 +177,14 @@ export class UserLoginComponent implements OnInit, OnDestroy {
         const user = await this._userLogin(userLogin);
         if (user && user.status === 200 && user.data) {
             this.cacheService.set('user', user.data);
-            this.tokenService.set({ token: user.data.token });
+            this.tokenService.set({ token: user.data.token, projId:  SystemResource.settingSystem.ProjId}); // 后续projectId需要进行动态获取
 
             const localAppDataResult = await this._getLocalAppData();
             if (localAppDataResult) {
                 this.cacheService.set('Menus', localAppDataResult.menu);
                 this.menuService.add(localAppDataResult.menu);
             }
-            
+
             this.router.navigate(['/dashboard/analysis']);
         } else {
             this.showError(user.message);
