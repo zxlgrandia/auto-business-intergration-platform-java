@@ -1,2 +1,1 @@
-# auto-business-intergration-platform-java
-for j2ee
+# auto-business-integration-setting-platform
