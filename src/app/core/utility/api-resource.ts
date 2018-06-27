@@ -200,7 +200,7 @@ export class APIResource {
    * @type {string}
    */
 
-  public static SettingUrl = 'http://192.168.1.8:8016/f277/Res/';
+  public static SettingUrl = 'http://192.168.1.8:8081/api.cfg/';
 
   /**
    * 解析平台标识代码
@@ -212,7 +212,7 @@ export class APIResource {
    * 解析平台URL
    * @type {string}
    */
-  public static LoginUrl = 'http://192.168.1.8:8016/eb43/Res/';
+  public static LoginUrl = 'http://192.168.1.8:8082/api.app';
   
   // public static LoginUrl = 'http://39.108.141.68:8016/eb43/Res/';
 

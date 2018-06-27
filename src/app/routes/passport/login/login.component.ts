@@ -177,6 +177,13 @@ export class UserLoginComponent implements OnInit, OnDestroy {
         if (user && user.status === 200 && user.data) {
             this.cacheService.set('user', user.data);
             this.tokenService.set({ token: user.data.token });
+
+            const localAppDataResult = await this._getLocalAppData();
+            if (localAppDataResult) {
+                this.cacheService.set('Menus', localAppDataResult.menu);
+                this.menuService.add(localAppDataResult.menu);
+            }
+            
             this.router.navigate(['/dashboard/analysis']);
         } else {
             this.showError(user.message);
